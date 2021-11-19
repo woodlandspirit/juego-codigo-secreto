@@ -12,7 +12,7 @@ def generar_ui_limpia():
     ui = [['░'] * 126] + [['░'] + [' '] * 124 + ['░'] for i in range(filas)] + [['░'] * 126 + [' '] * 126 ] # <<<<<<<<<<<<<<<< MATRICES >>>>>>>>>>>>>>>>
     dibujar_texto(ui, 3, 46, 'C Ó D I G O  S E C R E T O')
     dibujar_texto(ui, 7, 5, "O b j e t i v o  g e n e r a l  d e l  j u e g o :")
-    dibujar_texto(ui, 9, 5, "La computadora generará un código al azar de cuatro números que van del 1 al 9,")
+    dibujar_texto(ui, 9, 5, "La computadora generará un código al azar de cuatro números que van del 0 al 9,")
     dibujar_texto(ui, 10, 5, "que no se repiten entre sí. El objetivo es que el jugador adivine el número,")
     dibujar_texto(ui, 11, 5, "ingresando en cada intento un número diferente, mientras la computadora controla,")
     dibujar_texto(ui, 12, 5, "dígito a dígito, si existe coincidencia del número y la posición. Sin embargo,")
@@ -62,7 +62,7 @@ def agregar_registro_usuario(matriz_ui, tabla, contador=0):
 def generar_codigo_secreto():
     codigo_secreto = "0"
     
-    while len(set(codigo_secreto)) != 4:
+    while len(set(codigo_secreto)) != 4: # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CONJUNTOS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         codigo_secreto = str(randint(1000, 9999))
 
     return codigo_secreto
@@ -71,7 +71,7 @@ def generar_codigo_secreto():
 def pedir_nombre(matriz_ui):
     dibujar_texto(matriz_ui, 24, 9,'Bienvenido jugador! Ingrese a continuación su nombre.')
     imprimir_ui(matriz_ui)
-    nombre_jugador = input("Nombre: ").title()
+    nombre_jugador = (input("Nombre: ").title())[:15]
     print()
     
     dibujar_texto(matriz_ui, 24, 9, f"Hola {nombre_jugador}! Ingrese a continuación un n° entero de 4 dígitos SIN REPETICIONES")
@@ -94,7 +94,7 @@ def solicitar_numero():
 # Mensaje al jugador ante petición de finalizar el juego
 
 def salir_juego():
-    dibujar_texto(matriz_ui, 24, 9, "Ha salido del juego."+" "*65)
+    dibujar_texto(matriz_ui, 24, 9, "Ha salido del juego."+" "*70)
     dibujar_texto(matriz_ui, 25, 0, '░' + ' ' * 124 + '░')
     imprimir_ui(matriz_ui)
 
@@ -345,7 +345,7 @@ partida=None
 # Generación del código secreto
 
 codigo_secreto=generar_codigo_secreto()
-
+print(codigo_secreto)
 
 # Bienvenida al jugador
 
